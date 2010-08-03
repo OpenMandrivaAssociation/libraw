@@ -8,8 +8,8 @@ Name: libraw
 Version: 0.9.1
 Release: %mkrel 1
 License: LGPLv2 or CDDL
-Group: Development/Libraries
-URL: Development/C
+Group: Development/C
+URL: http://www.libraw.org
 Source0: http://www.libraw.org/data/LibRaw-%{version}.tar.gz
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 # Configuration support. Patch sent upstream
