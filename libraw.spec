@@ -5,7 +5,7 @@
 
 Summary: Library for reading RAW files obtained from digital photo cameras
 Name: libraw
-Version: 0.9.1
+Version: 0.10.0
 Release: %mkrel 1
 License: LGPLv2 or CDDL
 Group: Development/C
