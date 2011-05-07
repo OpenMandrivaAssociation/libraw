@@ -1,61 +1,111 @@
-# No point in trying to build a debuginfo package since
-# the package only has static libraries and find-debuginfo.sh
-# does not grok them
-%global debug_package %{nil}
+%define oname	LibRaw
 
-Summary: Library for reading RAW files obtained from digital photo cameras
-Name: libraw
-Version: 0.12.2
-Release: %mkrel 1
-License: LGPLv2 or CDDL
-Group: Development/C
-URL: http://www.libraw.org
-Source0: http://www.libraw.org/data/LibRaw-%{version}.tar.gz
-Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: libgomp-devel
-Buildrequires: lcms-devel
+%define major	2
+%define libname	%mklibname raw %{major}
+%define devname %mklibname raw -d
+
+Summary:	Library for reading and processing of RAW digicam images
+Name:		libraw
+Version:	0.13.4
+Release:	%mkrel 1
+License:	GPLv3
+Group:		Development/C
+URL:		http://www.libraw.org
+Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
+Source1:        http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-%{version}.tar.gz
+Source2:        http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-%{version}.tar.gz
+BuildRequires:	libgomp-devel
+Buildrequires:	lcms-devel
 
 %description
-LibRaw is a library for reading RAW files obtained from digital photo
-cameras (CRW/CR2, NEF, RAF, DNG, and others).
+LibRaw is a library for reading RAW files from digital photo cameras
+(CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are
+supported).
 
-LibRaw is based on the source codes of the dcraw utility, where part of
-drawbacks have already been eliminated and part will be fixed in future.
+It pays special attention to correct retrieval of data required for subsequent
+RAW conversion.
 
-%package devel
-Provides: %name-static-devel = %{version}-%{release}
-Summary: LibRaw development libraries
-Group: Development/C
+The library is intended for embedding in RAW converters, data analyzers, and
+other programs using RAW files as the initial data.
 
-%description devel
-LibRaw development libraries
+Since LibRaw is linked against LibRaw-demosaic-pack-GPL2 and
+LibRaw-demosaic-pack-GPL3 the global licence is GPLv3.
 
-This package contains static libraries that applications can use to build
-against LibRaw. LibRaw does not provide dynamic libraries.
+%package -n %{libname}
+Summary:	Library for reading and processing of RAW digicam images
+Group:		System/Libraries
+
+%description -n %{libname}
+LibRaw is a library for reading RAW files from digital photo cameras
+(CRW/CR2, NEF, RAF, DNG, MOS, KDC, DCR, etc, virtually all RAW formats are
+supported).
+
+It pays special attention to correct retrieval of data required for subsequent
+RAW conversion.
+
+The library is intended for embedding in RAW converters, data analyzers, and
+other programs using RAW files as the initial data.
+
+Since LibRaw is linked against LibRaw-demosaic-pack-GPL2 and
+LibRaw-demosaic-pack-GPL3 the global licence is GPLv3.
+
+%package -n %{devname}
+Summary:	LibRaw development files and headers
+Group:		Development/C
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{name}-devel < 0.13.4
+
+%description -n %{devname}
+This package contains the development files and headers for %{oname}.
+
+%package tools
+Summary:	Command line tools from %{oname}
+Group:		Graphics
+
+%description tools
+This packages provides tools to manipulate raw files.
 
 %prep
-%setup -qn LibRaw-%{version}
+%setup -qn %{oname}-%{version} -b1 -b2
 
 %build
-%configure2_5x
-make
+%configure2_5x --disable-openmp
+#parallel build tends to broke build
+make -j2
 
 %install
-rm -fr %buildroot
+rm -rf %{buildroot}
 %makeinstall_std
 
 # The source tree has these with execute permissions for some reason
 chmod 644 LICENSE.CDDL LICENSE.LGPL LICENSE.LibRaw.pdf
 
-rm -fr %buildroot%_datadir/doc/*
+# let files section handle docs
+rm -rf %{buildroot}%{_datadir}/doc/*
 
-%files devel
-%defattr(-,root,root,-)
-%doc LICENSE.CDDL LICENSE.LGPL COPYRIGHT Changelog.txt Changelog.rus
-%doc doc/*
-%dir %{_includedir}/libraw
-%{_includedir}/libraw/*.h
-%{_libdir}/libraw.a
-%{_libdir}/libraw_r.a
+# move docs to a better location
+mv doc html
+
+%clean
+rm -rf %{buildroot}
+
+%files tools
+%defattr(-,root,root)
 %{_bindir}/*
+
+%files -n %{libname}
+%defattr(-,root,root)
+%doc LICENSE* README README.demosaic-packs
+%{_libdir}/libraw.so.%{major}*
+%{_libdir}/libraw_r.so.%{major}*
+
+%files -n %{devname}
+%defattr(-,root,root)
+%doc LICENSE* Changelog.* README README.demosaic-packs html/
+%{_includedir}/libraw
+%{_libdir}/libraw.*a
+%{_libdir}/libraw_r.*a
+%{_libdir}/libraw.so
+%{_libdir}/libraw_r.so
 %{_libdir}/pkgconfig/*.pc
