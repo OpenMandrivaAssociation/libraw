@@ -6,7 +6,7 @@
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.13.4
+Version:	0.13.5
 Release:	%mkrel 1
 License:	GPLv3
 Group:		Development/C
