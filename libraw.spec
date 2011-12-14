@@ -1,13 +1,13 @@
 %define oname	LibRaw
 
-%define major	2
+%define major	5
 %define libname	%mklibname raw %{major}
 %define devname %mklibname raw -d
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.13.5
-Release:	%mkrel 1
+Version:	0.14.4
+Release:	1
 License:	GPLv3
 Group:		Development/C
 URL:		http://www.libraw.org
@@ -75,7 +75,6 @@ This packages provides tools to manipulate raw files.
 make -j2
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 # The source tree has these with execute permissions for some reason
@@ -86,9 +85,6 @@ rm -rf %{buildroot}%{_datadir}/doc/*
 
 # move docs to a better location
 mv doc html
-
-%clean
-rm -rf %{buildroot}
 
 %files tools
 %defattr(-,root,root)
