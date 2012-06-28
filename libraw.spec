@@ -6,7 +6,7 @@
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.14.6
+Version:	0.14.7
 Release:	1
 License:	GPLv3
 Group:		Development/C
@@ -70,7 +70,7 @@ This packages provides tools to manipulate raw files.
 %setup -qn %{oname}-%{version} -b1 -b2
 
 %build
-%configure2_5x --disable-openmp
+%configure2_5x --disable-openmp --disable-static
 #parallel build tends to broke build
 make -j2
 
@@ -87,21 +87,16 @@ rm -rf %{buildroot}%{_datadir}/doc/*
 mv doc html
 
 %files tools
-%defattr(-,root,root)
 %{_bindir}/*
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc LICENSE* README README.demosaic-packs
 %{_libdir}/libraw.so.%{major}*
 %{_libdir}/libraw_r.so.%{major}*
 
 %files -n %{devname}
-%defattr(-,root,root)
 %doc LICENSE* Changelog.* README README.demosaic-packs html/
 %{_includedir}/libraw
-%{_libdir}/libraw.*a
-%{_libdir}/libraw_r.*a
 %{_libdir}/libraw.so
 %{_libdir}/libraw_r.so
 %{_libdir}/pkgconfig/*.pc
