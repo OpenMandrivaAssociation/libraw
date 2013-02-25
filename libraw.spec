@@ -70,6 +70,8 @@ This packages provides tools to manipulate raw files.
 %setup -qn %{oname}-%{version} -b1 -b2
 
 %build
+%global	optflags %{optflags} -Ofast -fopenmp
+%global ldflags	%{ldflags} -fopenmp
 %configure2_5x	--disable-static
 %make
 
