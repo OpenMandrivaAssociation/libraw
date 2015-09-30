@@ -105,7 +105,7 @@ This packages provides tools to manipulate raw files.
 %make
 
 %install
-%makeinstall_std -C build
+%makeinstall_std
 
 # The source tree has these with execute permissions for some reason
 chmod 644 LICENSE.CDDL LICENSE.LGPL LICENSE.LibRaw.pdf
