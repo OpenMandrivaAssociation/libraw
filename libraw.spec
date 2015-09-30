@@ -14,7 +14,6 @@ Url:		http://www.libraw.org
 Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
 Source1:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-%{version}.tar.gz
 Source2:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-%{version}.tar.gz
-BuildRequires:	cmake
 BuildRequires:	gomp-devel
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
@@ -95,9 +94,14 @@ This packages provides tools to manipulate raw files.
 %setup -qn %{oname}-%{version} -b1 -b2
 
 %build
-%cmake \
-	-DENABLE_DEMOSAIC_PACK_GPL2=ON \
-	-DENABLE_DEMOSAIC_PACK_GPL3=ON
+%configure \
+    --enable-openmp \
+    --enable-jasper \
+    --enable-jpeg \
+    --enable-lcms \
+    --enable-demosaic-pack-gpl2 \
+    --enable-demosaic-pack-gpl3
+
 %make
 
 %install
@@ -112,4 +116,3 @@ rm -rf %{buildroot}%{_datadir}/%{name}
 
 # move docs to a better location
 mv doc html
-
