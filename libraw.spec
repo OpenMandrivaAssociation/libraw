@@ -1,5 +1,5 @@
 %define oname LibRaw
-%define major 10
+%define major 15
 %define libname %mklibname raw %{major}
 %define libname_r %mklibname raw_r %{major}
 %define devname %mklibname raw -d
@@ -74,7 +74,6 @@ This package contains the development files and headers for %{oname}.
 %{_libdir}/libraw.so
 %{_libdir}/libraw_r.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/cmake/Modules/FindLibRaw.cmake
 
 #----------------------------------------------------------------------------
 
