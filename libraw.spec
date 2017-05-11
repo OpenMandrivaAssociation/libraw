@@ -1,12 +1,12 @@
 %define oname LibRaw
-%define major 15
+%define major 16
 %define libname %mklibname raw %{major}
 %define libname_r %mklibname raw_r %{major}
 %define devname %mklibname raw -d
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.17.2
+Version:	0.18.2
 Release:	1
 License:	GPLv3+
 Group:		Development/C
@@ -14,7 +14,6 @@ Url:		http://www.libraw.org
 Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
 Source1:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-%{version}.tar.gz
 Source2:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-%{version}.tar.gz
-BuildRequires:	gomp-devel
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
 
@@ -107,7 +106,7 @@ This packages provides tools to manipulate raw files.
 %makeinstall_std
 
 # The source tree has these with execute permissions for some reason
-chmod 644 LICENSE.CDDL LICENSE.LGPL LICENSE.LibRaw.pdf
+chmod 644 LICENSE.CDDL LICENSE.LGPL
 
 # let files section handle docs
 rm -rf %{buildroot}%{_datadir}/doc/*
