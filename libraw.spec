@@ -14,7 +14,6 @@ Url:		http://www.libraw.org
 Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
 Source1:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-%{version}.tar.gz
 Source2:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-%{version}.tar.gz
-#BuildRequires:	gomp-devel
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
 
@@ -107,7 +106,7 @@ This packages provides tools to manipulate raw files.
 %makeinstall_std
 
 # The source tree has these with execute permissions for some reason
-chmod 644 LICENSE.CDDL LICENSE.LGPL LICENSE.LibRaw.pdf
+chmod 644 LICENSE.CDDL LICENSE.LGPL
 
 # let files section handle docs
 rm -rf %{buildroot}%{_datadir}/doc/*
