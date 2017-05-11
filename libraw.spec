@@ -4,10 +4,13 @@
 %define libname_r %mklibname raw_r %{major}
 %define devname %mklibname raw -d
 
+# (tpg) libomp is already in llvm-devel
+%define __noautoreq 'devel\\(libomp.*\\)'
+
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
 Version:	0.18.2
-Release:	1
+Release:	2
 License:	GPLv3+
 Group:		Development/C
 Url:		http://www.libraw.org
