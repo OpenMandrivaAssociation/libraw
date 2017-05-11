@@ -1,5 +1,5 @@
 %define oname LibRaw
-%define major 15
+%define major 16
 %define libname %mklibname raw %{major}
 %define libname_r %mklibname raw_r %{major}
 %define devname %mklibname raw -d
