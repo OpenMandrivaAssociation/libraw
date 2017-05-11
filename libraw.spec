@@ -6,7 +6,7 @@
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.17.2
+Version:	0.18.2
 Release:	1
 License:	GPLv3+
 Group:		Development/C
@@ -14,7 +14,7 @@ Url:		http://www.libraw.org
 Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
 Source1:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-%{version}.tar.gz
 Source2:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-%{version}.tar.gz
-BuildRequires:	gomp-devel
+#BuildRequires:	gomp-devel
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
 
