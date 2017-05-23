@@ -10,7 +10,7 @@
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
 Version:	0.18.2
-Release:	2
+Release:	3
 License:	GPLv3+
 Group:		Development/C
 Url:		http://www.libraw.org
@@ -102,6 +102,9 @@ This packages provides tools to manipulate raw files.
     --enable-lcms \
     --enable-demosaic-pack-gpl2 \
     --enable-demosaic-pack-gpl3
+
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
 %make
 
