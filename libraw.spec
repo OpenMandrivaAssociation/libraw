@@ -4,9 +4,6 @@
 %define libname_r %mklibname raw_r %{major}
 %define devname %mklibname raw -d
 
-# (tpg) libomp is already in llvm-devel
-%define __noautoreq 'devel\\(libomp.*\\)'
-
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
 Version:	0.18.2
@@ -17,6 +14,7 @@ Url:		http://www.libraw.org
 Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
 Source1:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-%{version}.tar.gz
 Source2:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-%{version}.tar.gz
+Patch0:     LibRaw-0.6.0-pkgconfig.patch
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
 
@@ -93,6 +91,7 @@ This packages provides tools to manipulate raw files.
 
 %prep
 %setup -qn %{oname}-%{version} -b1 -b2
+%apply_patches
 
 %build
 %configure \
