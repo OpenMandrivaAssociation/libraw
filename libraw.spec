@@ -91,7 +91,7 @@ This packages provides tools to manipulate raw files.
 
 %prep
 %setup -qn %{oname}-%{version} -b1 -b2
-%apply_patches
+%patch -p0
 
 %build
 %configure \
