@@ -6,7 +6,7 @@
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.18.5
+Version:	0.18.6
 Release:	1
 License:	GPLv3+
 Group:		Development/C
@@ -14,7 +14,8 @@ Url:		http://www.libraw.org
 Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
 Source1:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-%{version}.tar.gz
 Source2:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-%{version}.tar.gz
-Patch0:     LibRaw-0.6.0-pkgconfig.patch
+Patch0:		LibRaw-0.6.0-pkgconfig.patch
+Patch1:		libraw-0.18.6-compile.patch
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	pkgconfig(lcms2)
 
@@ -91,7 +92,7 @@ This packages provides tools to manipulate raw files.
 
 %prep
 %setup -qn %{oname}-%{version} -b1 -b2
-%patch -p0
+%apply_patches
 
 %build
 %configure \

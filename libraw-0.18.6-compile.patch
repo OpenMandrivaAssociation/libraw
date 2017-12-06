@@ -1,0 +1,11 @@
+--- LibRaw-0.18.6/internal/libraw_x3f.cpp.omv~	2017-12-06 20:49:29.310139890 +0100
++++ LibRaw-0.18.6/internal/libraw_x3f.cpp	2017-12-06 20:49:52.399205093 +0100
+@@ -1394,7 +1394,7 @@ static void huffman_decode_row(x3f_info_
+                                x3f_directory_entry_t *DE,
+                                int bits,
+                                int row,
+-                               int offset,
++                               int16_t offset,
+                                int *minimum)
+ {
+   x3f_directory_entry_header_t *DEH = &DE->header;
