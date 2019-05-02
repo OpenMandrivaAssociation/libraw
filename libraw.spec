@@ -6,8 +6,8 @@
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.19.0
-Release:	2
+Version:	0.19.2
+Release:	1
 License:	GPLv3+
 Group:		Development/C
 Url:		http://www.libraw.org
@@ -70,7 +70,7 @@ Provides:	%{name}-devel = %{EVRD}
 This package contains the development files and headers for %{oname}.
 
 %files -n %{devname}
-%doc LICENSE* Changelog.* README README.demosaic-packs html/
+%doc LICENSE* Changelog.* README.demosaic-packs html/
 %{_includedir}/libraw
 %{_libdir}/libraw.so
 %{_libdir}/libraw_r.so
