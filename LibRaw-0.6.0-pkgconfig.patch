@@ -1,28 +1,24 @@
-diff -up LibRaw-0.20.0/libraw.pc.in.1~ LibRaw-0.20.0/libraw.pc.in
---- LibRaw-0.20.0/libraw.pc.in.1~	2020-07-26 01:38:12.224565402 +0200
-+++ LibRaw-0.20.0/libraw.pc.in	2020-07-26 01:39:59.908564926 +0200
-@@ -5,7 +5,7 @@ includedir=@includedir@
- 
- Name: libraw
+diff -up LibRaw-0.21.0/libraw.pc.in.1~ LibRaw-0.21.0/libraw.pc.in
+--- LibRaw-0.21.0/libraw.pc.in.1~	2022-12-23 18:08:09.698080863 +0100
++++ LibRaw-0.21.0/libraw.pc.in	2022-12-23 18:10:10.849962404 +0100
+@@ -7,6 +7,6 @@ Name: libraw
  Description: Raw image decoder library (non-thread-safe)
--Requires: @PACKAGE_REQUIRES@
-+Requires.private: @PACKAGE_REQUIRES@
+ Requires: @PACKAGE_REQUIRES@
  Version: @PACKAGE_VERSION@
 -Libs: -L${libdir} -lraw -lstdc++@PC_OPENMP@
++Libs: -lraw
+ Libs.private: @PACKAGE_LIBS_PRIVATE@
 -Cflags: -I${includedir}/libraw -I${includedir}
-+Libs: -lraw@PC_OPENMP@
 +Cflags: -I${includedir}/libraw
-diff -up LibRaw-0.20.0/libraw_r.pc.in.1~ LibRaw-0.20.0/libraw_r.pc.in
---- LibRaw-0.20.0/libraw_r.pc.in.1~	2020-07-26 01:38:12.224565402 +0200
-+++ LibRaw-0.20.0/libraw_r.pc.in	2020-07-26 01:39:46.136437027 +0200
-@@ -5,7 +5,7 @@ includedir=@includedir@
- 
- Name: libraw
+diff -up LibRaw-0.21.0/libraw_r.pc.in.1~ LibRaw-0.21.0/libraw_r.pc.in
+--- LibRaw-0.21.0/libraw_r.pc.in.1~	2022-12-23 18:08:09.698080863 +0100
++++ LibRaw-0.21.0/libraw_r.pc.in	2022-12-23 18:10:06.003964393 +0100
+@@ -7,6 +7,6 @@ Name: libraw
  Description: Raw image decoder library (thread-safe)
--Requires: @PACKAGE_REQUIRES@
-+Requires.private: @PACKAGE_REQUIRES@
+ Requires: @PACKAGE_REQUIRES@
  Version: @PACKAGE_VERSION@
 -Libs: -L${libdir} -lraw_r -lstdc++@PC_OPENMP@
++Libs: -lraw_r
+ Libs.private: @PACKAGE_LIBS_PRIVATE@
 -Cflags: -I${includedir}/libraw -I${includedir}
-+Libs: -lraw_r @PC_OPENMP@
 +Cflags: -I${includedir}/libraw

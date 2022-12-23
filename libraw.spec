@@ -1,13 +1,13 @@
 %define oname LibRaw
-%define major 20
-%define libname %mklibname raw %{major}
-%define libname_r %mklibname raw_r %{major}
+%define major 23
+%define libname %mklibname raw
+%define libname_r %mklibname raw_r
 %define devname %mklibname raw -d
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.20.2
-Release:	2
+Version:	0.21.0
+Release:	1
 License:	GPLv3+
 Group:		Development/C
 Url:		http://www.libraw.org
