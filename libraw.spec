@@ -7,7 +7,7 @@
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
 Version:	0.21.1
-Release:	3
+Release:	4
 License:	GPLv3+
 Group:		Development/C
 Url:		http://www.libraw.org
@@ -37,6 +37,7 @@ LibRaw-demosaic-pack-GPL3 the global license is GPLv3.
 %package -n %{libname}
 Summary:	Library for reading and processing of RAW digicam images
 Group:		System/Libraries
+Obsoletes:	%{mklibname raw 20} < %{EVRD}
 
 %description -n %{libname}
 This package contains a shared library for %{name}.
@@ -49,6 +50,7 @@ This package contains a shared library for %{name}.
 %package -n %{libname_r}
 Summary:	Library for reading and processing of RAW digicam images
 Group:		System/Libraries
+Obsoletes:	%{mklibname raw_r 20} < %{EVRD}
 
 %description -n %{libname_r}
 This package contains a shared library for %{name}.
