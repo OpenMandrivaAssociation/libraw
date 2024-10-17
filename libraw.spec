@@ -10,7 +10,7 @@ Version:	0.21.3
 Release:	1
 License:	GPLv3+
 Group:		Development/C
-Url:		http://www.libraw.org
+Url:		https://www.libraw.org
 Source0:	http://www.libraw.org/data/%{oname}-%{version}.tar.gz
 Source1:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL2-0.18.8.tar.gz
 Source2:	http://www.libraw.org/data/%{oname}-demosaic-pack-GPL3-0.18.8.tar.gz
