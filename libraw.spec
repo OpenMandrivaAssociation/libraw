@@ -6,7 +6,7 @@
 
 Summary:	Library for reading and processing of RAW digicam images
 Name:		libraw
-Version:	0.22.1
+Version:	0.22.2
 Release:	1
 License:	GPLv3+
 Group:		Development/C
@@ -96,7 +96,7 @@ This packages provides tools to manipulate raw files.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -qn %{oname}-%{version} -b1 -b2
+%setup -qn %{oname}-%{version} -b1 -b2 -n LibRaw-0.22.2
 %autopatch -p1
 
 %conf
